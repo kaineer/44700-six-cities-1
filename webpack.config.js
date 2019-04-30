@@ -14,14 +14,17 @@ module.exports = {
     compress: false,
     port: 1337
   },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   module: {
     rules: [
       {
-	test: /\.jsx?$/,
-	exclude: /node_modules/,
-	use: {
-	  loader: `babel-loader`
-	}
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: `babel-loader`
+        }
       }
     ]
   },
