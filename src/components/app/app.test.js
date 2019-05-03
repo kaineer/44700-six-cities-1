@@ -4,8 +4,8 @@ import {create} from 'react-test-renderer';
 
 describe(`App`, () => {
   const places = [
-    {title: 'Первое место'},
-    {title: 'Второе место'}
+    {title: `Первое место`},
+    {title: `Второе место`}
   ];
 
   it(`should render correctly`, () => {
