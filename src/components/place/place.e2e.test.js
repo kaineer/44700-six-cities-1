@@ -2,9 +2,9 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import {Place} from './place';
-
 Enzyme.configure({adapter: new Adapter()});
+
+import {Place} from './place';
 
 describe(`Place e2e`, () => {
   let clickHandler;
