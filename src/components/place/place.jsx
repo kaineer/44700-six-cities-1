@@ -1,11 +1,11 @@
 // src/components/place/place.jsx
 
-import {string} from 'prop-types';
+import {string, func} from 'prop-types';
 const {isRequired: requiredString} = string;
 
 import React from 'react';
 
-export const Place = ({title}) => (
+export const Place = ({title, onClick = () => null}) => (
   <article className="cities__place-card place-card">
     <div className="place-card__mark">
       <span>Premium</span>
@@ -35,7 +35,7 @@ export const Place = ({title}) => (
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#">{title}</a>
+        <a href="#" onClick={() => onClick()}>{title}</a>
       </h2>
       <p className="place-card__type">Apartment</p>
     </div>
@@ -43,5 +43,6 @@ export const Place = ({title}) => (
 );
 
 Place.propTypes = {
-  title: requiredString
+  title: requiredString,
+  onClick: func
 };

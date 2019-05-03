@@ -91,6 +91,7 @@ exports[`Place should render correctly 1`] = `
     >
       <a
         href="#"
+        onClick={[Function]}
       >
         Унылая дыра в лебенях
       </a>

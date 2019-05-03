@@ -323,6 +323,7 @@ Array [
                 >
                   <a
                     href="#"
+                    onClick={[Function]}
                   >
                     Первое место
                   </a>
@@ -424,6 +425,7 @@ Array [
                 >
                   <a
                     href="#"
+                    onClick={[Function]}
                   >
                     Второе место
                   </a>
