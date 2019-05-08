@@ -1,7 +1,7 @@
 import React from 'react';
 import {Fragment} from 'react';
 
-import {arrayOf, string, shape} from 'prop-types';
+import {arrayOf, shape} from 'prop-types';
 
 import {Place} from '../place/place';
 
