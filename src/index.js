@@ -2,24 +2,11 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import {App} from './components/app/app';
 
-const places = [
-  {
-    title: `Beautiful & luxurious apartment at great location`,
-  },
-  {
-    title: `Wood and stone place`,
-  },
-  {
-    title: `Strange and abandoned grove`,
-  },
-  {
-    title: `Winter stronghold, just for you`
-  }
-];
+import offers from './mocks/offers';
 
 const init = () => {
   ReactDOM.render(
-      <App places={places} />,
+      <App places={offers} />,
       document.querySelector(`#root`)
   );
 };
