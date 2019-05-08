@@ -4,29 +4,33 @@ module.exports = [
   {
     title: `Beautiful & luxurious apartment at great location`,
     price: 120,
-    grade: 4.5,
+    rating: 93,
     isPremium: true,
+    picture: 'img/apartment-01.jpg',
     type: 'Apartment',
   },
   {
     title: `Wood and stone place`,
     price: 60,
-    grade: 2,
+    rating: 20,
     isPremium: false,
+    picture: 'img/apartment-01.jpg',
     type: 'Place',
   },
   {
     title: `Strange and abandoned grove`,
     price: 70,
-    grade: 2,
+    rating: 30,
     isPremium: false,
+    picture: 'img/apartment-01.jpg',
     type: 'Environment',
   },
   {
     title: `Winter stronghold, just for you`,
     price: 300,
-    grade: 5,
+    rating: 99,
     isPremium: true,
+    picture: 'img/apartment-01.jpg',
     type: 'Castle',
   }
 ];
