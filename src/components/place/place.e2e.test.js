@@ -1,10 +1,11 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-Enzyme.configure({adapter: new Adapter()});
+import {shallow} from 'enzyme';
 
 import {Place} from './place';
+
+import offers from '../../mocks/offers';
+
+const [offer] = offers;
 
 describe(`Place e2e`, () => {
   let clickHandler;
@@ -15,7 +16,7 @@ describe(`Place e2e`, () => {
     clickHandler = jest.fn();
     place = shallow(
         <Place
-          title={``}
+          {...offer}
           onClick={clickHandler}
         />
     );
@@ -39,6 +40,10 @@ describe(`Place e2e`, () => {
 
     it(`should call clickHandler once`, () => {
       expect(clickHandler).toHaveBeenCalledTimes(1);
+    });
+
+    it(`should call clickHandler with offer specified`, () => {
+      expect(clickHandler).toHaveBeenCalledWith(offer);
     });
   });
 });

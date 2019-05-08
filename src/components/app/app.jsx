@@ -1,9 +1,7 @@
 import React from 'react';
 import {Fragment} from 'react';
 
-import {arrayOf, string, shape} from 'prop-types';
-
-import {Place} from '../place/place';
+import {PlaceList} from '../place-list/place-list';
 
 export const App = ({places = []} = {}) => (
   <Fragment>
@@ -104,9 +102,7 @@ export const App = ({places = []} = {}) => (
                 */}
 
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              {places.map(({title}, id) => (<Place title={title} key={id} />))}
-            </div>
+            <PlaceList {...{places}} />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map"></section>
@@ -118,8 +114,4 @@ export const App = ({places = []} = {}) => (
   </Fragment>
 );
 
-App.propTypes = {
-  places: arrayOf(shape({
-    title: string
-  }))
-};
+App.propTypes = Object.assign({}, PlaceList.propTypes);

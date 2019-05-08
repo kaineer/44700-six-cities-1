@@ -1,16 +1,14 @@
 import React from 'react';
-import {Place} from './place';
+import {PlaceList} from './place-list';
 import {create} from 'react-test-renderer';
 
 import offers from '../../mocks/offers';
 
-const [offer] = offers;
-
-describe(`Place`, () => {
+describe(`PlaceList`, () => {
   it(`should render correctly`, () => {
     const tree = create(
-        <Place
-          {...offer}
+        <PlaceList
+          places={offers}
         />
     ).toJSON();
 
