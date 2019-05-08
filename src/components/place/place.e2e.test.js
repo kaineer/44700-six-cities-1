@@ -6,6 +6,10 @@ Enzyme.configure({adapter: new Adapter()});
 
 import {Place} from './place';
 
+import offers from '../../mocks/offers';
+
+const [offer] = offers;
+
 describe(`Place e2e`, () => {
   let clickHandler;
   let place;
@@ -15,7 +19,7 @@ describe(`Place e2e`, () => {
     clickHandler = jest.fn();
     place = shallow(
         <Place
-          title={``}
+          {...offer}
           onClick={clickHandler}
         />
     );
