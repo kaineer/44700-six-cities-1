@@ -14,7 +14,7 @@ module.exports = [
     price: 60,
     rating: 20,
     isPremium: false,
-    picture: 'img/apartment-01.jpg',
+    picture: 'img/apartment-02.jpg',
     type: 'Place',
   },
   {
@@ -22,7 +22,7 @@ module.exports = [
     price: 70,
     rating: 30,
     isPremium: false,
-    picture: 'img/apartment-01.jpg',
+    picture: 'img/apartment-03.jpg',
     type: 'Environment',
   },
   {
