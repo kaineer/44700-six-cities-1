@@ -105,7 +105,7 @@ export const App = ({places = []} = {}) => (
 
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {places.map(({title}, id) => (<Place title={title} key={id} />))}
+              {places.map((place, id) => (<Place {...place} key={id} />))}
             </div>
           </section>
           <div className="cities__right-section">
@@ -119,7 +119,5 @@ export const App = ({places = []} = {}) => (
 );
 
 App.propTypes = {
-  places: arrayOf(shape({
-    title: string
-  }))
+  places: arrayOf(shape(Place.propTypes))
 };
