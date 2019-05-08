@@ -41,5 +41,9 @@ describe(`Place e2e`, () => {
     it(`should call clickHandler once`, () => {
       expect(clickHandler).toHaveBeenCalledTimes(1);
     });
+
+    it(`should call clickHandler with offer specified`, () => {
+      expect(clickHandler).toHaveBeenCalledWith(offer);
+    });
   });
 });
