@@ -33,6 +33,7 @@
   "dependencies": {
     "babel-jest": "^24.7.1",
     "jest": "^24.7.1",
+    "leaflet": "1.5.1",
     "react-test-renderer": "^16.8.6"
   }
 }
