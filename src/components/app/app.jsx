@@ -2,6 +2,7 @@ import React from 'react';
 import {Fragment} from 'react';
 
 import {PlaceList} from '../place-list/place-list';
+import {CityMap} from '../city-map/city-map';
 
 export const App = ({places = []} = {}) => (
   <Fragment>
@@ -105,7 +106,7 @@ export const App = ({places = []} = {}) => (
             <PlaceList {...{places}} />
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <CityMap {...{places}}/>
           </div>
         </div>
       </div>

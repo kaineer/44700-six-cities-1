@@ -1,6 +1,6 @@
 // src/components/place/place.jsx
 
-import {string, number, bool, func} from 'prop-types';
+import {string, number, bool, func, array} from 'prop-types';
 
 import React from 'react';
 
@@ -12,8 +12,8 @@ const renderPremiumLabel = (isPremium) => (
   ) : null
 );
 
-export const Place = ({title, price, rating, isPremium, picture, type, onClick = () => null}) => {
-  const placeCard = {title, price, rating, isPremium, picture, type};
+export const Place = ({title, price, rating, isPremium, picture, type, location, onClick = () => null}) => {
+  const placeCard = {title, price, rating, isPremium, picture, type, location};
 
   return (
     <article className="cities__place-card place-card">
@@ -58,5 +58,6 @@ Place.propTypes = {
   isPremium: bool.isRequired,
   type: string.isRequired,
   picture: string.isRequired,
+  location: array,
   onClick: func
 };
