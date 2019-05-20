@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {arrayOf, shape} from 'prop-types';
 import {Place} from '../place/place';
 import leaflet from 'leaflet';
+
 
 export class CityMap extends Component {
   componentDidMount() {
@@ -20,7 +22,7 @@ export class CityMap extends Component {
   }
 
   _attachLeafletMap() {
-    const city = [52.38333, 4.9];
+    const {city, places} = this.props;
 
     const icon = leaflet.icon({
       iconUrl: `img/pin1.svg`,
@@ -29,12 +31,12 @@ export class CityMap extends Component {
 
     const zoom = 12;
     const map = leaflet.map(`map`, {
-      center: city,
+      center: city.location,
       zoom,
       zoomControl: false,
       marker: true
     });
-    map.setView(city, zoom);
+    map.setView(city.location, zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -42,7 +44,7 @@ export class CityMap extends Component {
       })
       .addTo(map);
 
-    this.props.places.forEach(({location}) => {
+    places.forEach(({location}) => {
       leaflet.
         marker(location, {icon}).
         addTo(map);
@@ -50,6 +52,15 @@ export class CityMap extends Component {
   }
 }
 
+import {cityType} from '../../prop-types';
+
 CityMap.propTypes = {
-  places: arrayOf(shape(Place.propTypes))
+  places: arrayOf(shape(Place.propTypes)),
+  city: cityType.isRequired,
 };
+
+const mapStateToProps = ({city, places}, ownProps) => Object.assign({}, ownProps, {
+  city, places
+});
+
+export default connect(mapStateToProps)(CityMap);

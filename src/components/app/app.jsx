@@ -1,10 +1,22 @@
-import React from 'react';
-import {Fragment} from 'react';
+import React, {Fragment} from 'react';
+import {connect} from 'react-redux';
 
 import {PlaceList} from '../place-list/place-list';
-import {CityMap} from '../city-map/city-map';
+import CityMap from '../city-map/city-map';
 
-export const App = ({places = []} = {}) => (
+import CityList from '../city-list/city-list';
+
+import {shape, arrayOf, number, string, func} from 'prop-types';
+
+import {ActionCreators} from '../../reducers/reducer';
+
+const {chooseCity, fetchPlaces} = ActionCreators;
+
+const placesLabel = (places) => (
+  `${places.length} place${places.length % 10 === 1 ? `` : `s`}`
+);
+
+export const App = ({places, cities, city, onChooseCity} = {}) => (
   <Fragment>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon-arrow-select" viewBox="0 0 7 4"><path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z"></path></symbol><symbol id="icon-bookmark" viewBox="0 0 17 18"><path d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z"></path></symbol><symbol id="icon-star" viewBox="0 0 13 12"><path fillRule="evenodd" clipRule="evenodd" d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"></path></symbol></svg>
@@ -35,46 +47,12 @@ export const App = ({places = []} = {}) => (
 
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
-      <div className="cities tabs">
-        <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
-        </section></div>
+      <div className="cities tabs"><CityList cities={cities} onCityChosen={(cityName) => onChooseCity(cityName)}/></div>
       <div className="cities__places-wrapper">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">312 places to stay in Amsterdam</b>
+            <b className="places__found">{placesLabel(places)} to stay in {city.name}</b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex="0">
@@ -106,7 +84,7 @@ export const App = ({places = []} = {}) => (
             <PlaceList {...{places}} />
           </section>
           <div className="cities__right-section">
-            <CityMap {...{places}}/>
+            <CityMap key={`city-map-${city.name}`} />
           </div>
         </div>
       </div>
@@ -115,4 +93,26 @@ export const App = ({places = []} = {}) => (
   </Fragment>
 );
 
-App.propTypes = Object.assign({}, PlaceList.propTypes);
+App.propTypes = Object.assign({}, PlaceList.propTypes, {
+  cities: arrayOf(shape({
+    name: string.isRequired,
+    location: arrayOf(number).isRequired
+  })),
+  onChooseCity: func.isRequired
+});
+
+const mapStateToProps = ({city, places}, ownProps) => Object.assign({}, ownProps, {
+  city, places
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onChooseCity: (cityName) => {
+    dispatch(chooseCity(cityName));
+    dispatch(fetchPlaces(cityName));
+  }
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);

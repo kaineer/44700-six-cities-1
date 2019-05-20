@@ -2,7 +2,7 @@ import React from 'react';
 import {Place} from './place';
 import {create} from 'react-test-renderer';
 
-import offers from '../../mocks/offers';
+import {offers} from '../../mocks/offers';
 
 const [offer] = offers;
 
