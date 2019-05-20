@@ -2,12 +2,12 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import {App} from './components/app/app';
 
-import offers from './mocks/offers';
+import {cities, offers} from './mocks/offers';
 
 const init = () => {
   ReactDOM.render(
-      <App places={offers} />,
-      document.querySelector(`#root`)
+    <App cities={cities} places={offers} />,
+    document.querySelector(`#root`)
   );
 };
 
