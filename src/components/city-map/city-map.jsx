@@ -52,8 +52,11 @@ export class CityMap extends Component {
   }
 }
 
+import {cityType} from '../../prop-types';
+
 CityMap.propTypes = {
-  places: arrayOf(shape(Place.propTypes))
+  places: arrayOf(shape(Place.propTypes)),
+  city: cityType.isRequired,
 };
 
 const mapStateToProps = ({city, places}, ownProps) => Object.assign({}, ownProps, {

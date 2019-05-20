@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {number, string, func, arrayOf, shape} from 'prop-types';
+import {func, arrayOf} from 'prop-types';
+
 export const CityList = ({cities, city, onCityChosen}) => (
   <section className="locations container">
     <ul className="locations__list tabs__list">
@@ -21,11 +22,11 @@ export const CityList = ({cities, city, onCityChosen}) => (
   </section>
 );
 
+import {cityType} from '../../prop-types';
+
 CityList.propTypes = {
-  cities: arrayOf(shape({
-    name: string.isRequired,
-    location: arrayOf[number]
-  })),
+  cities: arrayOf(cityType).isRequired,
+  city: cityType.isRequired,
   onCityChosen: func.isRequired
 };
 

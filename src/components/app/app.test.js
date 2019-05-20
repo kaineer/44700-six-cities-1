@@ -1,15 +1,19 @@
 import React from 'react';
-import {App} from './app';
+import App from './app';
 import {create} from 'react-test-renderer';
 
-import offers from '../../mocks/offers';
+import {cities} from '../../mocks/offers';
+
+import {MockProvider} from '../../mocks/store';
 
 describe(`App`, () => {
   it(`should render correctly`, () => {
     const tree = create(
+      <MockProvider>
         <App
-          places={offers}
+          {...{cities}}
         />
+      </MockProvider>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

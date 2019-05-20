@@ -3,9 +3,11 @@ import {shallow} from 'enzyme';
 
 import {Place} from './place';
 
-import offers from '../../mocks/offers';
+import {offers} from '../../mocks/offers';
 
-const [offer] = offers;
+const [offer] = offers.slice();
+
+delete offer.city;
 
 describe(`Place e2e`, () => {
   let clickHandler;
