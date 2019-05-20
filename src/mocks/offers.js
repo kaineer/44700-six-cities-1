@@ -49,7 +49,7 @@ export const offers = [
     bookmarked: false,
     type: `Apartment`,
     picture: `img/apartment-02.jpg`,
-    coords: [50.9308, 6.9598],
+    location: [50.9308, 6.9598],
     city: `Cologne`,
   },
   {
@@ -60,7 +60,7 @@ export const offers = [
     bookmarked: false,
     type: `Private room`,
     picture: `img/room.jpg`,
-    coords: [51.2140, 6.8019],
+    location: [51.2140, 6.8019],
     city: `Dusseldorf`,
   },
   {
@@ -71,7 +71,7 @@ export const offers = [
     bookmarked: false,
     type: `Private room`,
     picture: `img/room.jpg`,
-    coords: [53.5466, 10.0075],
+    location: [53.5466, 10.0075],
     city: `Hamburg`,
   }
 ];
@@ -91,6 +91,6 @@ export const cities = [
   },
   {
     name: `Hamburg`,
-    location:  [51.1961, 6.7813],
+    location: [53.5466, 10.0075],
   }
 ];
