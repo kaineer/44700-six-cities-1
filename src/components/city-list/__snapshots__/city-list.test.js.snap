@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<City-list /> should render correctly 1`] = `
+exports[`<CityList /> should render correctly 1`] = `
 <section
   className="locations container"
 >

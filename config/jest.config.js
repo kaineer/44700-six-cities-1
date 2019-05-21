@@ -15,5 +15,6 @@ module.exports = {
     '**/*.test.js',
     '**/*.e2e.test.js',
   ],
-  verbose: false
+  verbose: false,
+  bail: true
 };

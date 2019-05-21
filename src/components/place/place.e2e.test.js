@@ -20,6 +20,7 @@ describe(`Place e2e`, () => {
         <Place
           {...offer}
           onClick={clickHandler}
+          active={false}
         />
     );
     title = place.find(`.place-card__name a`);
@@ -37,7 +38,7 @@ describe(`Place e2e`, () => {
 
   describe(`after click`, () => {
     beforeEach(() => {
-      title.simulate(`click`);
+      title.simulate(`click`, {preventDefault() {}});
     });
 
     it(`should call clickHandler once`, () => {

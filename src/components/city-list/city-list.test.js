@@ -13,12 +13,14 @@ const city = {
 };
 
 
-describe(`<City-list />`, () => {
+describe(`<CityList />`, () => {
   it(`should render correctly`, () => {
     const onCityChosen = jest.fn();
     const tree = create(
         <CityList
           {...{city, cities, onCityChosen}}
+          activeItem={0}
+          setActiveItem={jest.fn()}
         />
     ).toJSON();
 
