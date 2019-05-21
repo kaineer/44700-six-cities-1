@@ -8,7 +8,11 @@ describe(`PlaceList`, () => {
   it(`should render correctly`, () => {
     const amsterdamPlaces = offers.filter((offer) => offer.city === `Amsterdam`);
     const tree = create(
-        <PlaceList places={amsterdamPlaces} />
+        <PlaceList
+          places={amsterdamPlaces}
+          activeItem={-1}
+          setActiveItem={jest.fn()}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

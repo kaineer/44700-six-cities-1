@@ -10,7 +10,7 @@ export const initialState = {
   places: filterOffersByCityName(cities[0].name)
 };
 
-const ActionTypes = {
+export const ActionTypes = {
   CHOOSE_CITY: `CHOOSE_CITY`,
   FETCH_OFFERS: `FETCH_OFFERS`,
 };

@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {arrayOf, shape} from 'prop-types';
-import {Place} from '../place/place';
 import leaflet from 'leaflet';
-
 
 export class CityMap extends Component {
   componentDidMount() {
@@ -52,11 +50,11 @@ export class CityMap extends Component {
   }
 }
 
-import {cityType} from '../../prop-types';
+import {cityType, placeType} from '../../prop-types';
 
 CityMap.propTypes = {
-  places: arrayOf(shape(Place.propTypes)),
-  city: cityType.isRequired,
+  places: arrayOf(shape(placeType)),
+  city: shape(cityType).isRequired,
 };
 
 const mapStateToProps = ({city, places}, ownProps) => Object.assign({}, ownProps, {

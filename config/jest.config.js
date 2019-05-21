@@ -5,7 +5,7 @@ const {join} = require('path');
 module.exports = {
   rootDir: join(__dirname, '..'),
   roots: [
-    '<rootDir>/src/components'
+    '<rootDir>/src'
   ],
   setupFiles: [
     join(__dirname, 'jest/enzyme.js')
@@ -15,5 +15,6 @@ module.exports = {
     '**/*.test.js',
     '**/*.e2e.test.js',
   ],
-  verbose: false
+  verbose: false,
+  bail: true
 };

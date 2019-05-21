@@ -12,11 +12,11 @@ const renderPremiumLabel = (isPremium) => (
   ) : null
 );
 
-export const Place = ({title, price, rating, isPremium, picture, type, location, onClick = () => null}) => {
+export const Place = ({title, price, rating, isPremium, picture, type, location, active, onClick}) => {
   const placeCard = {title, price, rating, isPremium, picture, type, location};
 
   return (
-    <article className="cities__place-card place-card">
+    <article className={`cities__place-card place-card${active ? ` cities__place-card--active` : ``}`}>
       {renderPremiumLabel(isPremium)}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
@@ -43,7 +43,10 @@ export const Place = ({title, price, rating, isPremium, picture, type, location,
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={() => onClick(placeCard)}>{title}</a>
+          <a href="#" onClick={(e) => {
+            e.preventDefault();
+            onClick(placeCard);
+          }}>{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -59,5 +62,6 @@ Place.propTypes = {
   type: string.isRequired,
   picture: string.isRequired,
   location: array,
-  onClick: func
+  active: bool.isRequired,
+  onClick: func.isRequired,
 };

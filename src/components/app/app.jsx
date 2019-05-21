@@ -6,9 +6,14 @@ import CityMap from '../city-map/city-map';
 
 import CityList from '../city-list/city-list';
 
-import {shape, arrayOf, number, string, func} from 'prop-types';
+import {shape, arrayOf, func} from 'prop-types';
 
 import {ActionCreators} from '../../reducers/reducer';
+
+import {withActiveItem} from '../../hocs/with-active-item/with-active-item';
+
+const PlaceListWrapped = withActiveItem(PlaceList);
+const CityListWrapped = withActiveItem(CityList, 0);
 
 const {chooseCity, fetchPlaces} = ActionCreators;
 
@@ -47,7 +52,7 @@ export const App = ({places, cities, city, onChooseCity} = {}) => (
 
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
-      <div className="cities tabs"><CityList cities={cities} onCityChosen={(cityName) => onChooseCity(cityName)}/></div>
+      <div className="cities tabs"><CityListWrapped cities={cities} onCityChosen={(cityName) => onChooseCity(cityName)}/></div>
       <div className="cities__places-wrapper">
         <div className="cities__places-container container">
           <section className="cities__places places">
@@ -81,7 +86,7 @@ export const App = ({places, cities, city, onChooseCity} = {}) => (
                 */}
 
             </form>
-            <PlaceList {...{places}} />
+            <PlaceListWrapped key={`place-list-${city.name}`} {...{places}} />
           </section>
           <div className="cities__right-section">
             <CityMap key={`city-map-${city.name}`} />
@@ -93,11 +98,10 @@ export const App = ({places, cities, city, onChooseCity} = {}) => (
   </Fragment>
 );
 
-App.propTypes = Object.assign({}, PlaceList.propTypes, {
-  cities: arrayOf(shape({
-    name: string.isRequired,
-    location: arrayOf(number).isRequired
-  })),
+import {cityType} from '../../prop-types';
+
+App.propTypes = Object.assign({}, {
+  cities: arrayOf(shape(cityType)),
   onChooseCity: func.isRequired
 });
 

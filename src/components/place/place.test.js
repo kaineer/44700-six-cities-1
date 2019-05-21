@@ -11,6 +11,8 @@ describe(`Place`, () => {
     const tree = create(
         <Place
           {...offer}
+          active={false}
+          onClick={jest.fn()}
         />
     ).toJSON();
 
